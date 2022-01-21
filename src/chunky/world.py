@@ -36,6 +36,9 @@ class World:
 	def get_loaded_chunks(self):
 		return self.__loaded_chunks.copy()
 
+	def get_active_chunk(self, player_pos:Vec2d):
+		pos = World.to_chunk_space(player_pos)
+		return self.__chunks.get(self.__generate_key(int(pos.x), int(pos.y)))
 
 	def __generate_key(self, j, i):
 		return f'{j}:{i}'
